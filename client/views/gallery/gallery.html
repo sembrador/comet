@@ -1,0 +1,22 @@
+<template name="gallery">
+	<div id="content" class="outside">
+		<div class="panel-left">
+			<div id="imageList">
+				<div class="header-textbox">
+				<div class="image-list-panels">
+					<div class="gallery-upload">
+						{{> gallerySubmit}}
+					</div>
+					<div class="panel">
+					</div>
+				</div>
+				<div class="images">
+					{{#each gallery}}
+						{{> galleryImage}}
+					{{/each}}
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
