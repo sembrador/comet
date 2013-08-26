@@ -1,0 +1,10 @@
+<template name="comment">
+	<li>
+		<h4>
+			<span class="author"><a href="#" class="upvote btn {{upvoteClass}}">&uarr;</a>
+			<a href="#" class="downvote btn {{downvoteClass}}">&darr;</a>{{votes}} votes - {{author}}</span>
+			<span class="date">on {{submittedText}}</span>
+			<p>{{body}}</p>
+		</h4>
+	</li>
+</template>

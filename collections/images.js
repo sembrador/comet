@@ -32,5 +32,59 @@ Meteor.methods({
 
         var imageId = Images.insert(newImage);
         return imageId;
+    },
+
+    upvote: function(imageId) {
+        var user = Meteor.user();
+
+        if (!user)
+            throw new Meteor.Error(401, 'You need to login to upvote');
+        var image = Images.findOne(imageId);
+        if (!image)
+            throw new Meteor.Error(422, 'Image not found');
+        if (_.include(user.upvotes, image._id))
+            throw new Meteor.Error(422, 'Alreader upvoted this');
+
+        Images.update({
+            _id: imageId,
+            }, {
+                $inc: {votes: 1}
+            });
+
+        Meteor.users.update({
+          _id: user._id, 
+          upvotes: {$ne: imageId}
+        }, {
+          $addToSet: {upvotes: imageId},
+          $pull: {downvotes: imageId}
+        });
+    },
+
+    downvote: function(imageId) {
+        var user = Meteor.user();
+
+        if (!user)
+            throw new Meteor.Error(401, 'You need to login to upvote');
+        var image = Images.findOne(imageId);
+        if (!image)
+            throw new Meteor.Error(422, 'Image not found');
+        if (_.include(user.downvotes, imageId))
+            throw new Meteor.Error(422, 'Alreader downvoted this');
+        if (image.votes == 0)
+            throw new Meteor.Error(422, 'Votes cannot be negative');
+
+        Images.update({
+            _id: imageId,
+            }, {
+            $inc: {votes: -1}
+        });
+
+        Meteor.users.update({
+          _id: user._id, 
+          downvotes: {$ne: imageId}
+        }, {
+          $addToSet: {downvotes: imageId},
+          $pull: {upvotes: imageId}
+        });
     }
 });

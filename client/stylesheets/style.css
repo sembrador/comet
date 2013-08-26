@@ -406,6 +406,145 @@ body {
     word-wrap: break-word;
 }
 
+.submit-caption {
+    color: rgb(221, 221, 209);
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    height: 33px;
+    line-height: 10px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 5px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    position: relative;
+    width: 610px;
+}
+
+.caption-area {
+    -webkit-appearance: none;
+    -webkit-flex-direction: column;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    -webkit-writing-mode: horizontal-tb;
+    background-color: rgb(18, 18, 17);
+    border-bottom-color: rgb(68, 68, 66);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-image-outset: 0px;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgb(68, 68, 66);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: rgb(68, 68, 66);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: rgb(68, 68, 66);
+    border-top-style: solid;
+    border-top-width: 1px;
+    color: rgb(136, 136, 136);
+    cursor: auto;
+    display: block;
+    float: left;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    height: 20px;
+    letter-spacing: normal;
+    line-height: normal;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 7px;
+    resize: none;
+    text-align: start;
+    text-indent: 0px;
+    text-shadow: none;
+    text-transform: none;
+    white-space: pre-wrap;
+    width: 514px;
+    word-spacing: 0px;
+    word-wrap: break-word;
+    writing-mode: lr-tb;
+}
+
+.submit-button {
+    -webkit-align-items: flex-start;
+    -webkit-appearance: none;
+    -webkit-background-clip: border-box;
+    -webkit-background-origin: padding-box;
+    -webkit-background-size: auto;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    -webkit-writing-mode: horizontal-tb;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: linear-gradient(rgb(43, 43, 43) 0px, rgb(18, 18, 17) 100%);
+    background-origin: padding-box;
+    background-size: auto;
+    border-bottom-color: rgb(68, 68, 66);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-image-outset: 0px;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgb(68, 68, 66);
+    border-left-style: solid;
+    border-left-width: 2px;
+    border-right-color: rgb(68, 68, 66);
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-top-color: rgb(68, 68, 66);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-top-style: solid;
+    border-top-width: 2px;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: block;
+    float: right;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    height: 33px;
+    letter-spacing: normal;
+    line-height: normal;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 3px;
+    text-align: center;
+    text-indent: 0px;
+    text-shadow: none;
+    text-transform: none;
+    white-space: pre;
+    width: 78px;
+    word-spacing: 0px;
+    writing-mode: lr-tb;
+}
+
 #spinner { height: 300px }
 .post {
     *zoom: 1;
@@ -423,7 +562,7 @@ body {
 }
 .post:after { clear: both }
 .post.invisible { opacity: 0 }
-.post .upvote {
+.post .upvotable {
     display: block;
     margin: 7px 12px 0 0;
     float: left;

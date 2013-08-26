@@ -1,5 +1,7 @@
 <template name="galleryImage">
 	<div class="image">
-		<a href="{{galleryPagePath this}}" class="thumbnail"><img src="{{url}}" alt="{{name}}" height="141" width="141"></a>
+		<a href="{{galleryPagePath this}}" class="thumbnail"><img src="{{url}}" alt="{{name}}" height="141" width="141"></a><a href="#" class="upvote btn {{upvotedClass}}">&uarr;</a>
+			<a href="#" class="downvote btn {{downvoteClass}}">&darr;</a>
+			<p> {{votes}}
 	</div>
 </template>

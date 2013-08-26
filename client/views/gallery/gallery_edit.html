@@ -1,23 +1,31 @@
 <template name="galleryEdit">
-	<form class="main">
-		<div class="control-group">
-			<label class="control-label" for="title">Title</label>
-			<div class="controls">
-				<input type="text" name="title">
+	{{#with image}}
+		{{#if ownsImage}}
+		<form class="main">
+			<div class="control-group">
+				<label class="control-label" for="title">Title</label>
+				<div class="controls">
+					<input type="text" name="title">
+				</div>
 			</div>
-		</div>
 
-		<div class="control-group">
-			<label class="control-label" for="description">Description</label>
-			<div class="controls">
-				<input type="text" name="description">
+			<div class="control-group">
+				<label class="control-label" for="description">Description</label>
+				<div class="controls">
+					<input type="text" name="description" placeholder="{{title}}">
+				</div>
 			</div>
-		</div>
 
-		<div class="control-group">
-			<div class="controls">
-				<input type="submit" value="Submit" class="btn btn-primary"/>
+			<div class="control-group">
+				<div class="controls">
+					<input type="submit" value="Submit" class="btn btn-primary" placeholder="{{description}}">
+				</div>
 			</div>
-		</div>
-	</form>
+		</form>
+		{{> galleryPage}}
+		{{else}}
+			{{> accessDenied}}
+		{{/if}}
+
+	{{/with}}
 </template>

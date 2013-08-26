@@ -14,6 +14,13 @@
 					{{#each gallery}}
 						{{> galleryImage}}
 					{{/each}}
+					{{#if imagesReady}}
+				      {{#unless allImagesLoaded}}
+				        <a class="load-more" href="#">Load more</a>
+				      {{/unless}}
+				    {{else}}
+				      <div>{{> spinner}}</div>
+				    {{/if}}
 				</div>
 				</div>
 			</div>

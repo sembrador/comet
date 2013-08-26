@@ -1,3 +1,13 @@
+Template.galleryEdit.helpers({
+	image: function() {
+		return Images.findOne(Session.get('currentImageId'));
+	},
+
+	ownsImage: function() {
+		return this.userId == Meteor.userId();
+	}
+})
+
 Template.galleryEdit.events({
 	'submit form': function(e) {
 		e.preventDefault();		
@@ -8,6 +18,12 @@ Template.galleryEdit.events({
 			title: $(e.target).find('[name=title]').val(),
 			description: $(e.target).find('[name=description]').val()
 		}
+
+		if (!imageProperties.title) {
+			throwError('Please enter a title');
+			Meteor.Router.to('galleryPageEdit', currentImageId);
+		}
+
 
 		Images.update(currentImageId, {$set: imageProperties}, function(error, id) {
 			if (error)
