@@ -8,6 +8,9 @@ Template.signUp.events({
 	    	password: $(e.target).find('[name=password]').val()
 	    };
 
+	    // if (options.username.length < 3)
+	    // 	throw new Meteor.Error 
+
 	    Accounts.createUser(options, function(error) {
 			if (error)
 				throw new Meteor.Error(422, 'Sign up failed');
@@ -21,6 +24,12 @@ Template.signUp.events({
 	    		Meteor.Router.to('/');
 	    	}
 	    });
-	  }
-});
+	  },
 
+	// 'focus .form-control': function(e, template) {
+	// 	e.preventDefault();
+
+	// 	if ($(e.target).find('[name=username]'))
+	// 		$('.alert alert-success').val() == 'test';
+	// }
+});

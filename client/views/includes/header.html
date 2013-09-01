@@ -1,20 +1,33 @@
 <template name="header">
-  <div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="{{galleryPath}}">Comet</a>
-      <a href="{{gallerySubmitPath}}" class="btn btn-success">upload</a>
-      <a href="{{signUpPath}}" class="btn btn-success">sign up</a>
-      <ul class="nav pull-right">
-          <li>{{loginButtons}}</li>
-      </ul>
-      </div><!-- /.nav-collapse -->
-    </div><!-- /.container -->
-  </div><!-- /.navbar-inner -->
-</div><!-- /.navbar -->
+  <div class="navbar navbar-fixed-top" style="z-index: 10;">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="{{homePath}}">Comet</a>
+
+            <div class="nav-collapse collapse">
+
+                <ul class="nav">
+                    <li class="add-menu"><a href="/upload"><i class="icon-circle-arrow-up icon-white"></i> upload</a></li>
+                    {{#unless currentUser}}
+                      <li class="add-menu"><a href="{{signUpPath}}"><i class="icon-edit icon-white"></i> sign up</a></li>
+                    {{/unless}}
+                </ul>
+
+                <ul class="nav pull-right">
+                  <li class="about-menu"><a href="/images">images</a></li>
+                      <ul class="nav pull-right">
+                        <li>{{loginButtons}}</li>
+                      </ul>
+                  </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
 </template>

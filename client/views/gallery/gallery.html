@@ -1,29 +1,26 @@
+<template name="bestImages">
+	{{> gallery options}}
+</template>
+
+<template name="newImages">
+	{{> gallery options}}
+</template>
+
 <template name="gallery">
-	<div id="content" class="outside">
-		<div class="panel-left">
-			<div id="imageList">
-				<div class="header-textbox">
-				<div class="image-list-panels">
-					<div class="gallery-upload">
-						{{> gallerySubmit}}
-					</div>
-					<div class="panel">
-					</div>
-				</div>
-				<div class="images">
-					{{#each gallery}}
-						{{> galleryImage}}
-					{{/each}}
-					{{#if imagesReady}}
-				      {{#unless allImagesLoaded}}
-				        <a class="load-more" href="#">Load more</a>
-				      {{/unless}}
-				    {{else}}
-				      <div>{{> spinner}}</div>
-				    {{/if}}
-				</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<ul class="tabs">
+		<li class="{{activeRouteClass 'home' 'bestImages'}}"><a href="{{bestImagesPath}}">Best</a></li>
+		<li class="{{activeRouteClass 'newImages' 'newImages'}}"><a href="{{newImagesPath}}">New</a></li>
+	</ul>
+	<ul class="thumbnails">
+	{{#each imagesWithRank}}
+		{{> galleryImage}}
+	{{/each}}
+	</ul>
+	{{#if imagesReady}}
+      {{#unless allImagesLoaded}}
+        <a class="load-more" href="#">Load more</a>
+      {{/unless}}
+    {{else}}
+      <div>{{> spinner}}</div>
+    {{/if}}
 </template>

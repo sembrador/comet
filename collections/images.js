@@ -22,6 +22,7 @@ Meteor.methods({
             submitted: new Date().getTime(),
             commentsCount: 0,
             votes: 0,
+            views: 0,
             url: image
         };
 

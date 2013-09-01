@@ -5,8 +5,12 @@ Template.galleryEdit.helpers({
 
 	ownsImage: function() {
 		return this.userId == Meteor.userId();
+	},
+
+	error: function() {
+		throwError('Oh hai. Nice try, be gone now.');
 	}
-})
+});
 
 Template.galleryEdit.events({
 	'submit form': function(e) {

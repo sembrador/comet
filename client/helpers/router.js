@@ -1,15 +1,25 @@
 Meteor.Router.add({
-	'/': 'gallery',
+	'/': {
+		to: 'bestImages',
+		as: 'home',
+		and: function() { Session.set('currentPage', "gallery"); }
+		},
+	'/best': 'bestImages',
+	'/new': 'newImages',
 	'/gallery/:_id': {
 		to: 'galleryPage',
 		and: function(id) {	Session.set('currentImageId', id); }
 	},
 	'/gallery/:_id/edit': {
 		to: 'galleryEdit',
-		and: function(id) { Session.set('currentImageId', id)}
+		and: function(id) { Session.set('currentImageId', id); }
 	},
 	'/upload': 'gallerySubmit',
-	'/signup': 'signUp'
+	'/signup': 'signUp',
+	'/images': {
+		to: 'userImages',
+		and: function() { Session.set('currentPage', "userImages"); }
+	}
 });
 
 Meteor.Router.filters({

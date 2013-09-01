@@ -1,7 +1,6 @@
 body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #eee;
+  padding-top: 0px;
+  padding-bottom: 60px;
 }
 
 .form-signin {
@@ -39,4 +38,14 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+input.text_field{
+    border:1px solid #ddd;
+    font-size:14px;
+    padding:8px;
+    width:200px;
+    margin:0;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
 }

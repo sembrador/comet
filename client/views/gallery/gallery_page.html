@@ -1,36 +1,49 @@
 <template name="galleryPage">
-	{{#with currentImage}}
-	<div id="content" class="outside">
-		<div class="panel-left-short">
-			<div id="imageList">
+	<div id="main">
+		{{#with currentImage}}
+			<div class="image-page">
 				<div class="header-textbox">
-					<h2 class="image-title">{{title}}</h2>
+					<h2 class="image-title">
+						{{#if title}}
+							{{title}}
+						{{else}}
+							No title :(
+						{{/if}}
+					</h2>
 				</div>
-				<div class="image-list-panels">
-					<div class="gallery-upload">
+				<div class="image-panel">
+					<div class="image">
+						<div class="image-grid">
+							<img src="{{url}}" alt="{{name}}" class="img-rounded" width="440">
+						</div>
+						{{#if currentUser}}
+					      {{> commentSubmit}}
+					    {{/if}}
 					</div>
-					<div class="panel">
-
+					
+					<div class="under-image">
+						<ul class="comments">
+							<h4>{{pluralize commentsCount "Comment"}}</h4>
+							<div class="comment-header"></div>
+					      {{#each commentsWithRank}}
+					        {{> comment}}
+					      {{/each}}
+					    </ul>
 					</div>
-				</div>
-				<div class="image-zoom">
-					<img src="{{url}}" alt="{{name}}" width="400">
-				</div>
-				<div class="under-image">
-					{{#if currentUser}}
-				      {{> commentSubmit}}
-				    {{else}}
-				      <p>Please log in to leave a comment.</p>
-				    {{/if}}
-					<ul class="comments">
-				      {{#each comments}}
-				        {{> comment}}
-				      {{/each}}
-				    </ul>
 				</div>
 			</div>
-		</div>
+			<div class="right-panel">
+					<div class="stats">
+						<h4>Favorites - <small>none</small></h4>
+						<h4>Views - <small>{{views}}</small></h4>
+						<h4>Submitted - <small>{{submittedText}}</small></h4>
+						<h4>Author - <small>{{author}}</small></h4>
+					</div>
+					<div class="mini-gallery">
+						{{> gallerySidebar}}
+					</div>
+				</div>
+		{{/with}}
 	</div>
-	{{/with}}
 </template>
 
