@@ -8,17 +8,22 @@ Meteor.Router.add({
 	'/new': 'newImages',
 	'/gallery/:_id': {
 		to: 'galleryPage',
-		and: function(id) {	Session.set('currentImageId', id); }
+		and: function(id) {	Session.set('currentImageId', id);
+							Session.set('commentsLimit', 15); 
+			}
 	},
 	'/gallery/:_id/edit': {
 		to: 'galleryEdit',
 		and: function(id) { Session.set('currentImageId', id); }
 	},
 	'/upload': 'gallerySubmit',
-	'/signup': 'signUp',
 	'/images': {
 		to: 'userImages',
 		and: function() { Session.set('currentPage', "userImages"); }
+	},
+	'/favorites': {
+		to: 'userFavorites', 
+		and: function() { Session.set('currentPage', "userFavorites"); }
 	}
 });
 

@@ -4,4 +4,11 @@
 			{{> galleryThumbnail}}
 		{{/each}}
 	</ul>
+	{{#if imagesReady}}
+      {{#unless allImagesLoaded}}
+        <a class="load-more-sidebar" href="#">Load more</a>
+      {{/unless}}
+    {{else}}
+      <div>{{> spinner}}</div>
+    {{/if}}
 </template>

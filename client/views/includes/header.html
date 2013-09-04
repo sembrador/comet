@@ -13,17 +13,25 @@
 
                 <ul class="nav">
                     <li class="add-menu"><a href="/upload"><i class="icon-circle-arrow-up icon-white"></i> upload</a></li>
-                    {{#unless currentUser}}
-                      <li class="add-menu"><a href="{{signUpPath}}"><i class="icon-edit icon-white"></i> sign up</a></li>
-                    {{/unless}}
                 </ul>
 
                 <ul class="nav pull-right">
-                  <li class="about-menu"><a href="/images">images</a></li>
+                  <ul class="nav">
+                  {{#if currentUser}}
+                    <div id="account" class="dropdown">
+                      <a id="account-a" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            account <b class="caret"></b>
+                          </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="/images">images</a></li>
+                        <li><a href="/favorites">favorites</a></li>  
+                      </ul>
+                    </div>
+                  </ul>
+                  {{/if}}                    
                       <ul class="nav pull-right">
                         <li>{{loginButtons}}</li>
                       </ul>
-                  </li>
                 </ul>
             </div>
             <!--/.nav-collapse -->

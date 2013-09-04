@@ -7,6 +7,12 @@
 </template>
 
 <template name="gallery">
+	{{#unless currentUser}}
+		<div class="alert alert-success">
+	    <button type="button" class="close" data-dismiss="alert">&times;</button>
+	    <p>Please sign up if you would like to vote :)</p>
+	  </div>
+	{{/unless}}
 	<ul class="tabs">
 		<li class="{{activeRouteClass 'home' 'bestImages'}}"><a href="{{bestImagesPath}}">Best</a></li>
 		<li class="{{activeRouteClass 'newImages' 'newImages'}}"><a href="{{newImagesPath}}">New</a></li>

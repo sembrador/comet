@@ -1,13 +1,12 @@
 <template name="comment">
 	<div class="comment">
-		<h4>
-			{{#if currentUser}}
-			<span class="author"><a href="#" class="upvote btn {{upvoteClass}}">&uarr;</a>
-			<a href="#" class="downvote btn {{downvoteClass}}">&darr;</a>
-			{{/if}}
-			{{votes}} votes - {{author}}</span>
-			<span class="date">- {{submittedText}}</span>
-			<p>{{body}}</p>
-		</h4>
+		<h4><p>{{body}}</p>
+		{{#if currentUser}}
+		<a href="#" class="upvote btn {{upvoteClass}}"><icon class="icon-chevron-up icon-white"></i></a>
+		<a href="#" class="downvote btn {{downvoteClass}}"><icon class="icon-chevron-down icon-white"></i></a>
+		{{/if}}
+		<small>
+		{{pluralize votes "vote"}} - {{author}}
+		- {{submittedText}}</small></h4>
 	</div>
 </template>

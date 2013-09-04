@@ -3,14 +3,50 @@ Template.galleryPage.helpers({
 		return Images.findOne(Session.get('currentImageId'));
 	},
 
-	commentsWithRank: function() {
-		var i = 0, options = {sort: {votes: -1, submitted:-1}};
+	commentsWithRank: function(limit) {
+		var i = 0, options = {sort: {votes: -1, submitted:-1}, limit: Session.get('commentsLimit')};
 		return Comments.find({imageId: this._id}, options).map(function(comment) {
 			comment._rank = i;
 			i += 1;
 			return comment;
 		});
 	},
+
+  upvoteClass: function() {
+    var user = Meteor.user();
+    if (user)
+      if (user._id && !_.include(user.upvotes, this._id))
+        return 'btn-primary upvotable';
+      else
+        return 'disabled';
+    else {
+      return 'disabled';
+    }
+  },
+
+  downvoteClass: function() {
+    var user = Meteor.user();
+    if (user)
+      if (user._id && !_.include(user.downvotes, this._id) && this.votes != 0)
+        return 'btn-primary downvotable';
+      else 
+        return 'disabled';
+    else {
+      return 'disabled';
+    }
+  },
+
+  favoriteClass: function() {
+    var user = Meteor.user();
+    if (user)
+      if (user._id && !_.include(user.favorites, this._id))
+        return 'btn-primary favorite';
+      else 
+        return 'disabled';
+    else {
+      return 'disabled';
+    }
+  },
 
   submittedText: function() {
       return new Date(this.submitted).ago;
@@ -41,3 +77,26 @@ Template.galleryPage.rendered = function(){
     $this.css("top",  "0px").removeClass("invisible");
   }); 
 };
+
+
+Template.galleryPage.events({
+  'click .upvotable': function(e) {
+    e.preventDefault();
+    Meteor.call('upvote', this._id);
+  },
+
+  'click .downvotable': function(e) {
+    e.preventDefault();
+    Meteor.call('downvote', this._id);
+  },
+
+  'click .favorite': function(e) {
+    e.preventDefault();
+    Meteor.call('favorite', this._id);
+  },
+
+  'click .load-more': function(e) {
+    e.preventDefault();
+    Session.set('commentsLimit', 10);
+  }
+});

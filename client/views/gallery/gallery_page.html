@@ -29,13 +29,17 @@
 					        {{> comment}}
 					      {{/each}}
 					    </ul>
+					    <a class="load-more" href="#">Load more</a>
 					</div>
 				</div>
 			</div>
 			<div class="right-panel">
 					<div class="stats">
-						<h4>Favorites - <small>none</small></h4>
-						<h4>Views - <small>{{views}}</small></h4>
+						<h4><a href="#" class="upvote btn {{favoriteClass}}"><icon class="icon-heart icon-white"></i></a>Favorites - <small>{{favorites}}</small></h4>
+						<h4>{{#if currentUser}}
+		<a href="#" class="upvote btn {{upvoteClass}}"><icon class="icon-chevron-up icon-white"></i></a>
+		<a href="#" class="downvote btn {{downvoteClass}}"><icon class="icon-chevron-down icon-white"></i></a>
+		{{/if}}Votes - <small>{{votes}}</small></h4>
 						<h4>Submitted - <small>{{submittedText}}</small></h4>
 						<h4>Author - <small>{{author}}</small></h4>
 					</div>

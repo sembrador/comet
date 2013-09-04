@@ -2,19 +2,27 @@
 	<li class="thumbnail plain">
 		{{#if currentPage}}
 		    	{{#if ownsImage}}
-		    		<a href="{{galleryEditPath this}}" class="btn btn-primary">edit</a>
+		    		<a href="{{galleryEditPath this}}" class="btn btn-info">Edit</a>
 		    		<a href="#" class="btn btn-danger delete">delete</a>
 				{{/if}}
 			{{/if}}
 		<div id="gallery-image">
-		<a href="{{galleryPagePath this}}" class="thumbnail plain" style="text-align: center;">
-	    	<img src="{{url}}" height="200" width="250" alt=""></a></div>
+			<a href="{{galleryPagePath this}}" class="thumbnail plain" style="text-align: center;">
+		    	<img src="{{url}}" height="200" width="250" alt="">
+		    </a>
+		</div>
 	    	<div class="under-thumbnail">
-		    	<h5><a href="#" class="upvote btn {{upvotedClass}}">&uarr;</a>
-			<a href="#" class="downvote btn {{downvoteClass}}">&darr;</a>{{title}}</h5>
+		    	<h5>
+		    		<a href="#" class="upvote btn {{favoriteClass}}"><icon class="icon-heart icon-white"></i></a>
+		    		<a href="#" class="upvote btn {{upvotedClass}}"><icon class="icon-chevron-up icon-white"></i></a>
+					<a href="#" class="downvote btn {{downvoteClass}}"><icon class="icon-chevron-down icon-white"></i></a>
+					{{#if titleTooLong}}
+						- <b>{{author}}</b>
+					{{/if}}
+				</h5>
 		    	<ul class="tools">
-		     		<li>{{author}}</li>
-		    		<li><i class="icon-globe"></i>{{pluralize votes "vote"}}, submitted {{submittedText}}</li>
+		    		<b><li><i class="icon-globe"></i>{{pluralize votes "vote"}}, submitted {{submittedText}}</li></b>
+		    	</ul>
 	    	</div>
 	</li>
 </template>

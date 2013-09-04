@@ -1,19 +1,40 @@
 Template.galleryImage.helpers({
 	upvotedClass: function() {
 		var user = Meteor.user();
-		if (user._id && !_.include(user.upvotes, this._id))
-			return 'btn-primary upvotable';
-		else
+		if (user)
+			if (user._id && !_.include(user.upvotes, this._id))
+				return 'btn-primary upvotable';
+			else
+				return 'disabled';
+		else {
 			return 'disabled';
+		}
 	},
 
 	downvoteClass: function() {
 		var user = Meteor.user();
-		if (user._id && !_.include(user.downvotes, this._id) && this.votes != 0)
-			return 'btn-primary downvotable';
-		else 
+		if (user)
+			if (user._id && !_.include(user.downvotes, this._id) && this.votes != 0)
+				return 'btn-primary downvotable';
+			else 
+				return 'disabled';
+		else {
 			return 'disabled';
+		}
 	},
+
+	favoriteClass: function() {
+		var user = Meteor.user();
+		if (user)
+			if (user._id && !_.include(user.favorites, this._id))
+				return 'btn-primary favorite';
+			else 
+				return 'disabled';
+		else {
+			return 'disabled';
+		}
+	},
+
 	submittedText: function() {
 	    return new Date(this.submitted).ago;
 	},
@@ -24,6 +45,13 @@ Template.galleryImage.helpers({
 
 	currentPage: function() {
 		if (Session.get('currentPage') == 'userImages')
+			return true;
+		else 
+			return false;
+	},
+
+	titleTooLong: function() {
+		if (this.author.length < 8)
 			return true;
 		else 
 			return false;
@@ -39,6 +67,11 @@ Template.galleryImage.events({
 	'click .downvotable': function(e) {
 		e.preventDefault();
 		Meteor.call('downvote', this._id);
+	},
+
+	'click .favorite': function(e) {
+		e.preventDefault();
+		Meteor.call('favorite', this._id);
 	},
 
 	'click .delete': function(e) {

@@ -22,6 +22,7 @@ Meteor.publish(null, function () {
      }, {
      	fields: {
      		'upvotes': 1,
-     		'downvotes': 1
+     		'downvotes': 1,
+        'favorites': 1
  	}});
 });

@@ -87,5 +87,30 @@ Meteor.methods({
           $addToSet: {downvotes: imageId},
           $pull: {upvotes: imageId}
         });
+    },
+
+    favorite: function(imageId) {
+        var user = Meteor.user();
+
+        if (!user)
+            throw new Meteor.Error(401, 'You need to login to favorite');
+        var image = Images.findOne(imageId);
+        if (!image)
+            throw new Meteor.Error(422, 'Image not found');
+        if (_.include(user.downvotes, imageId))
+            throw new Meteor.Error(422, 'Alreader favorited this');
+
+        Images.update({
+            _id: imageId,
+            }, {
+            $inc: {favorites: 1}
+        });
+
+        Meteor.users.update({
+          _id: user._id, 
+          favorites: {$ne: imageId}
+        }, {
+          $addToSet: {favorites: imageId},
+        });
     }
 });
