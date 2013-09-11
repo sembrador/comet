@@ -43,10 +43,20 @@ Meteor.Router.filters({
 	'clearSuccess': function(page) {
 		clearSuccess();
 		return page;
-	}
+	},
+
+	'views': function(page) {
+		if (Session.get('currentImageId')){
+	    Meteor.call('views', Session.get('currentImageId'));
+	  	return page;
+	  } else {
+	  	return page;
+	  }
+  }
 });
+
 
 Meteor.Router.filter('requireLogin', {only: 'galleryEdit'});
 Meteor.Router.filter('clearErrors');
 Meteor.Router.filter('clearSuccess');
-
+Meteor.Router.filter('views');

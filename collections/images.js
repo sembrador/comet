@@ -112,5 +112,13 @@ Meteor.methods({
         }, {
           $addToSet: {favorites: imageId},
         });
+    },
+
+    views: function(imageId) {
+        Images.update({
+            _id: imageId,
+            }, {
+            $inc: {views: 1}
+        });
     }
-});
+}); 
