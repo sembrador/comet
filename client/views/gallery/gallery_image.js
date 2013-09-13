@@ -50,7 +50,7 @@ Template.galleryImage.helpers({
 			return false;
 	},
 
-	titleTooLong: function() {
+	titleTooLong: function(author) {
 		if (this.author.length < 8)
 			return true;
 		else 

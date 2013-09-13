@@ -20,13 +20,20 @@ imageUpload = (function() {
     reader = new FileReader();
     reader.onload = function(e) {
       var image = e.target.result;
+      var user = Meteor.user();
       Meteor.call('upload', image, function(error, id) {
        if (error) {
          throw new Meteor.Error(422, 'File not uploaded');
        }
-       else 
-         Meteor.Router.to('galleryEdit', id);
-         throwSuccess('Image submitted successfully');
+       else { 
+         if (user) {
+           Meteor.Router.to('galleryEdit', id);
+           throwSuccess('Image submitted successfully');
+         } else {
+           Meteor.Router.to('/');
+           throwSuccess('Image submitted successfully');           
+         }
+       }
       });
     };
     

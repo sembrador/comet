@@ -16,8 +16,10 @@
 		    		<a href="#" class="upvote btn {{favoriteClass}}"><icon class="icon-heart icon-white"></i></a>
 		    		<a href="#" class="upvote btn {{upvotedClass}}"><icon class="icon-chevron-up icon-white"></i></a>
 					<a href="#" class="downvote btn {{downvoteClass}}"><icon class="icon-chevron-down icon-white"></i></a>
-					{{#if titleTooLong}}
-						- <b>{{author}}</b>
+					{{#if author}}
+						{{#if titleTooLong}}
+							- <b>{{author}}</b>
+						{{/if}}
 					{{/if}}
 				</h5>
 		    	<ul class="tools">
