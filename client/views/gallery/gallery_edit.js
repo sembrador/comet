@@ -28,12 +28,26 @@ Template.galleryEdit.events({
 			Meteor.Router.to('galleryPageEdit', currentImageId);
 		}
 
+		if (imageProperties.title >= 140) {
+			throwError('Title can only be 60 characters');
+			Meteor.Router.to('galleryPageEdit', currentImageId);
+		}
+
+		if (imageProperties.description >= 140) {
+			throwError('Description can only be 140 characters');
+			Meteor.Router.to('galleryPageEdit', currentImageId);
+		}
 
 		Images.update(currentImageId, {$set: imageProperties}, function(error, id) {
 			if (error)
 				throw new Meteor.Error(422, 'Image not updated');
 			else 
+			{
 				Meteor.Router.to('galleryPage', currentImageId);
+				throwSuccess('Image updated');
+			}
 		});
+
+
 	}
 });

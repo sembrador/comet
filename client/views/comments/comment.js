@@ -21,6 +21,11 @@ Template.comment.helpers({
 
 	submittedText: function() {
 	    return new Date(this.submitted).ago;
+  },
+
+  bodyAdjusted: function(body) {
+  	if (body.length >= 30)
+  		return '-small';
   }
 });
 

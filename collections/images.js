@@ -1,4 +1,3 @@
-// requires
 Images = new Meteor.Collection('images');
 
 Images.allow({
@@ -34,7 +33,7 @@ Meteor.methods({
         var imageId = Images.insert(newImage);
         return imageId;
     },
-
+    
     upvote: function(imageId) {
         var user = Meteor.user();
 

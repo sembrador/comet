@@ -1,6 +1,6 @@
 <template name="comment">
 	<div class="comment">
-		<h4><p>{{body}}</p>
+		<h4><p class="body{{bodyAdjusted body}}">{{body}}</p>
 		{{#if currentUser}}
 		<a href="#" class="upvote btn {{upvoteClass}}"><icon class="icon-chevron-up icon-white"></i></a>
 		<a href="#" class="downvote btn {{downvoteClass}}"><icon class="icon-chevron-down icon-white"></i></a>

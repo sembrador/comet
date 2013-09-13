@@ -1,16 +1,10 @@
 <template name="gallerySubmit">
-	<form class="main">
-		<div class="control-group">
-			<label class="control-label" for="url">Image</label>
-			<div class="controls">
-				<input name="images" type="file" accept="image/*">
-			</div>
+
+		<div id="dropzone">
+			<form action="/" class="dropzone dz-clickable" id="image-upload-dropzone">
+				<div class="dz-default dz-message"></div>
+			</form>
 		</div>
 
-		<div class="control-group">
-			<div class="controls">
-				<input type="submit" value="Submit" class="btn btn-primary"/>
-			</div>
-		</div>
-	</form>
+	<script src="dropzone.min.js"></script>
 </template>

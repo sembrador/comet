@@ -26,3 +26,5 @@ Meteor.publish(null, function () {
         'favorites': 1
  	}});
 });
+
+

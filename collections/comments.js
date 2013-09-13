@@ -13,6 +13,8 @@ Meteor.methods({
       		throw new Meteor.Error(422, 'Please write some content');
 		if (!commentAttributes.imageId)
 			throw new Meteor.Error(422, 'That Image does not exist');
+		if (commentAttributes.body >= 140)
+			throw new Meteor.Error(422, 'Comments can only be 140 characters');
 
 		comment = _.extend(_.pick(commentAttributes, 'imageId', 'body'), {
 			userId: user._id,

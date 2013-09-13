@@ -3,7 +3,7 @@
 		{{#with currentImage}}
 			<div class="image-page">
 				<div class="header-textbox">
-					<h2 class="image-title">
+					<h2 class="image-title-{{titleAdjusted title}}">
 						{{#if title}}
 							{{title}}
 						{{else}}
@@ -35,6 +35,8 @@
 			</div>
 			<div class="right-panel">
 					<div class="stats">
+						<a href="/" class="btn btn-primary">browse gallery</a>
+				 		<button class="btn btn-primary random">random</button>
 						<h4><a href="#" class="upvote btn {{favoriteClass}}"><icon class="icon-heart icon-white"></i></a>Favorites - <small>{{favorites}}</small></h4>
 						<h4>{{#if currentUser}}
 		<a href="#" class="upvote btn {{upvoteClass}}"><icon class="icon-chevron-up icon-white"></i></a>

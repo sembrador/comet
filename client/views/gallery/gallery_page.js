@@ -50,6 +50,11 @@ Template.galleryPage.helpers({
 
   submittedText: function() {
       return new Date(this.submitted).ago;
+  },
+
+  titleAdjusted: function(title) {
+    if (title.length >= 20)
+      return 'small';
   }
 });
 
@@ -98,5 +103,12 @@ Template.galleryPage.events({
   'click .load-more': function(e) {
     e.preventDefault();
     Session.set('commentsLimit', 10);
+  },
+
+  'click .random': function(e) {
+    var imgs = Images.find({}, {sort: {votes: -1, submitted: -1}, limit: bestGalleryHandle.limit()});
+    var imgArray = imgs.fetch();
+    randomImage = Random.choice(imgArray);
+    Meteor.Router.to('galleryPage', randomImage._id);
   }
 });

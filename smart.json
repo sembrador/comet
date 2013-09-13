@@ -3,6 +3,7 @@
     "router": {},
     "accounts-ui-bootstrap-dropdown": {},
     "paginated-subscription": {},
-    "spin": {}
+    "spin": {},
+    "npm": {}
   }
 }
